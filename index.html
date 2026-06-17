@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Graduation Memory Book</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        135deg,
+        #fdf2f8,
+        #fff7ed,
+        #eef2ff
+    );
+    font-family:Georgia, serif;
+}
+
+.book-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.book{
+    width:500px;
+    height:650px;
+    position:relative;
+    perspective:6000px;
+}
+
+.spine{
+    position:absolute;
+    left:-15px;
+    width:30px;
+    height:100%;
+    background:linear-gradient(
+        to right,
+        #6d4c41,
+        #9c7c6d,
+        #6d4c41
+    );
+    border-radius:15px;
+    z-index:999;
+}
+
+.page{
+    position:absolute;
+    width:100%;
+    height:100%;
+    transform-origin:left center;
+    transform-style:preserve-3d;
+    transition:1s ease;
+}
+
+.page.flipped{
+    transform:rotateY(-180deg);
+}
+
+.front,
+.back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#fffdf8;
+    backface-visibility:hidden;
+    border-radius:0 20px 20px 0;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.back{
+    transform:rotateY(180deg);
+}
+
+.page1{z-index:6;}
+.page2{z-index:5;}
+.page3{z-index:4;}
+.page4{z-index:3;}
+.page5{z-index:2;}
+.page6{z-index:1;}
+
+.border{
+    position:absolute;
+    inset:15px;
+    border:2px solid #ead7ff;
+    border-radius:15px;
+}
+
+.content{
+    height:100%;
+    padding:60px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+h1{
+    color:#000000;
+    margin-bottom:20px;
+}
+
+h2{
+    color:#000000;
+    margin-bottom:20px;
+}
+
+p{
+    color:#555;
+    line-height:1.9;
+    font-size:18px;
+}
+
+.quote{
+    font-style:italic;
+    color:#180748;
+}
+
+.floral{
+    position:absolute;
+    font-size:42px;
+}
+
+.tl{top:15px;left:15px;}
+.tr{top:15px;right:15px;}
+.bl{bottom:15px;left:15px;}
+.br{bottom:15px;right:15px;}
+
+.controls{
+    margin-top:25px;
+    display:flex;
+    gap:15px;
+}
+
+button{
+    padding:12px 22px;
+    border:none;
+    border-radius:30px;
+    background:#892a57;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+.music-note{
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="Landslide.mp3" type="audio/mpeg">
+</audio>
+
+<div class="book-container">
+
+<div class="book">
+
+<div class="spine"></div>
+
+<!-- COVER -->
+
+<div class="page page1">
+<div class="front">
+
+<div class="border"></div>
+
+<div class="floral tl">🌸</div>
+<div class="floral tr">🌷</div>
+<div class="floral bl">🌹</div>
+<div class="floral br">🌼</div>
+
+<div class="content">
+
+<h1>🎓</h1>
+
+<h2>Congratulations, 
+    Dearest Agatha!
+</h2>
+
+<p>
+Know that even though your college 
+journey has come to an end, I will 
+always be here cheering you on and 
+supporting you in whatever path you 
+choose to take. 🫶
+</p>
+
+</div>
+</div>
+<div class="back"></div>
+</div>
+
+<!-- PAGE 2 -->
+
+<div class="page page2">
+<div class="front">
+
+<div class="border"></div>
+
+<div class="content">
+
+<h2>A trip down memory lane</h2>
+
+<p>
+College gave you your highest highs and lowest lows, 
+but no matter what happened along the way, you conquered it!
+</p>
+
+
+<p>
+One of my fondest memories with you, oddly enough, was during 
+our Poliqan era! It's funny because I still look back on it 
+fondly despite the countless sleepless nights we endured HAHAHAHA. 
+During that time, I got to know you better. I got to know the 
+real Agi—the kind Agi, the determined Agi. The Agi who was willing 
+to stay up until midnight just to study for an exam. The Agi who 
+always shows up for her friends and remains patient despite my 
+terrible time management skills (elev sa green fr).
+</p>
+
+</div>
+</div>
+<div class="back"></div>
+</div>
+
+<!-- PAGE 3 -->
+
+<div class="page page3">
+<div class="front">
+
+<div class="border"></div>
+
+<div class="content">
+
+<h2>A trip worth remembering 💕</h2>
+
+<p>
+Looking back, those moments were exhausting, 
+but they're also some of the memories I'll 
+always cherish because I got to experience 
+them with you. 💚
+</p>
+
+</div>
+</div>
+<div class="back"></div>
+</div>
+
+<!-- PAGE 4 -->
+
+<div class="page page4">
+<div class="front">
+
+<div class="border"></div>
+
+<div class="content">
+
+<h2>Your next move ♟️</h2>
+
+<p>
+Like the song playing in the background, 
+I want you to know that whatever path you 
+choose to take in life, I'll always be 
+supporting you. 
+</p>
+
+<p>
+💕 Don't be afraid to take 
+that first step outside the bubble we formed 
+during college (and no, this is not me 
+pressuring you to go to law school 😭). 
+Sometimes we get so comfortable in college 
+that the thought of entering the "real world" 
+becomes scary. 
+</p>
+
+</div>
+</div>
+<div class="back"></div>
+</div>
+
+<!-- PAGE 5 -->
+
+<div class="page page5">
+<div class="front">
+
+<div class="border"></div>
+
+<div class="content">
+
+<h2>Keep writing your story</h2>
+
+<p>
+But whatever your plan is—do it. Do it scared. 
+Do it anxious. Do it even when you're unsure. 
+The important thing is that you take the step. 
+</p>
+
+<p>
+As you go along, you'll figure things out. If 
+it turns out to be the right path for you, keep 
+going. If not, that's okay too. No one is keeping 
+score of our mistakes, and no one is judging us 
+as much as we think they are. We can always change 
+directions, start over, and try again. 
+</p>
+
+<p>
+Life isn't about getting everything right on the 
+first try—it's about having the courage to keep 
+moving forward. And whatever happens, know that 
+I'll always be cheering you on every step of the way. 💕
+</p>
+
+</div>
+</div>
+<div class="back"></div>
+</div>
+
+<!-- PAGE 6 -->
+
+<div class="page page6">
+<div class="front">
+
+<div class="border"></div>
+
+<div class="floral tl">🌸</div>
+<div class="floral tr">🌷</div>
+<div class="floral bl">🌹</div>
+<div class="floral br">🌼</div>
+
+<div class="content">
+
+<h2>A little motivator</h2>
+
+<p class="quote">
+"Keep moving Forward!" - Meet the Robinsons(2007)
+</p>
+
+<br>
+
+<p>
+Once again, congratulations, Agi. 
+Thank you for letting me be part 
+of your college journey. I'll 
+always be rooting for you. 💚
+</p>
+
+
+<p>
+P.S. Also if you want my fave motivator is 
+"If" by Rudyard Kipling hihi
+</p>
+
+<br>
+
+<p>
+💜
+</p>
+
+</div>
+</div>
+<div class="back"></div>
+</div>
+
+</div>
+
+<div class="controls">
+
+<button onclick="prevPage()">
+⬅ Previous
+</button>
+
+<button onclick="nextPage()">
+Next ➡
+</button>
+
+<button onclick="toggleMusic()">
+🎵 Play / Pause
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const pages = document.querySelectorAll('.page');
+const music = document.getElementById('bgMusic');
+
+let currentPage = 0;
+let musicStarted = false;
+
+function startMusic(){
+
+    if(!musicStarted){
+
+        music.play().catch(() => {});
+
+        musicStarted = true;
+    }
+}
+
+function nextPage(){
+
+    startMusic();
+
+    if(currentPage < pages.length){
+
+        pages[currentPage]
+        .classList.add('flipped');
+
+        currentPage++;
+    }
+}
+
+function prevPage(){
+
+    if(currentPage > 0){
+
+        currentPage--;
+
+        pages[currentPage]
+        .classList.remove('flipped');
+    }
+}
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play();
+
+    }else{
+
+        music.pause();
+    }
+}
+
+</script>
+
+</body>
+</html>
